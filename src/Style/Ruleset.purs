@@ -2,7 +2,7 @@ module Style.Ruleset where
 
 import Prelude
 
-import Data.Array as Array
+import Data.Foldable (intercalate)
 import Data.Array.NonEmpty (NonEmptyArray)
 import Style.Declaration (Declaration)
 import Style.Declaration as Declaration
@@ -20,7 +20,7 @@ render (Ruleset ss ds) = selectors <> "{" <> declarations <> "}"
   where
 
   selectors :: String
-  selectors = Array.intercalate ",\n" (Selector.render <$> ss) <> " "
+  selectors = intercalate ",\n" (Selector.render <$> ss) <> " "
 
   declarations :: String
-  declarations = "\n  " <> Array.intercalate "\n  " (Declaration.render <$> ds) <> "\n"
+  declarations = "\n  " <> intercalate "\n  " (Declaration.render <$> ds) <> "\n"

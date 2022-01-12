@@ -11,7 +11,8 @@ import Style.Declaration.Value as V
 
 data Declaration = Declaration Property Value
 
-derive instance eqDeclaration :: Eq Declaration
+instance eqDeclaration :: Eq Declaration where
+  eq (Declaration p1 v1) (Declaration p2 v2) = eq p1 p2 && eq v1 v2
 
 instance ordDeclaration :: Ord Declaration where
   compare (Declaration p1 v1) (Declaration p2 v2) =
