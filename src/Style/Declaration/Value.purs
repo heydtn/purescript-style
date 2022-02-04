@@ -499,7 +499,7 @@ pct :: forall v. Number -> Variant (Pct v)
 pct = inj _pct
 
 renderPct :: forall v. (Variant v -> String) -> Variant (Pct v) -> String
-renderPct = on _pct \n -> Number.toString n <> "pct"
+renderPct = on _pct \n -> Number.toString n <> "%"
 
 
 type Pt v = (pt :: Number | v)
